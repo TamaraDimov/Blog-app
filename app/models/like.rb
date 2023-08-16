@@ -4,6 +4,9 @@ class Like < ApplicationRecord
 
   # Set a default value of 0 for CommentsCounter and LikesCounter
   attribute :LikesCounter, default: 0
+  after_save :increment_likes_counter_for_post
+
+  private
 
   # Increment the LikesCounter
   def increment_likes_counter_for_post
