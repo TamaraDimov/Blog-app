@@ -1,3 +1,3 @@
 RSpec.describe Like, type: :model do
-  #tests go here
+  # tests go here
 end

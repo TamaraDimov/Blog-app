@@ -3,10 +3,10 @@ require_relative './rails_helper'
 RSpec.describe User, type: :model do
   subject do
     User.new(
-      name: 'Loren',
-      photo: 'https://this-person-does-not-exist.com/en/download-page?image=genef4e9868ae582ca3061881b69d8fbeb1',
-      posts_counter: 0,
-      bio: 'I am Loren, and I love sport.'
+      Name: 'Loren',
+      Photo: 'https://this-person-does-not-exist.com/en/download-page?image=genef4e9868ae582ca3061881b69d8fbeb1',
+      Post_counter: 0,
+      Bio: 'I am Loren, and I love sport.'
     )
   end
 
@@ -18,12 +18,12 @@ RSpec.describe User, type: :model do
     end
 
     it 'is not valid without a name' do
-      subject.name = nil
+      subject.Name = nil
       expect(subject).to_not be_valid
     end
 
     it 'is not valid with negative posts_counter' do
-      subject.posts_counter = -1
+      subject.Post_counter = -1
       expect(subject).to_not be_valid
     end
   end
@@ -33,15 +33,15 @@ RSpec.describe User, type: :model do
       it 'returns the 3 most recent posts' do
         5.times do |i|
           Post.create(
-            title: "Post #{i}",
+            Title: "Post #{i}",
             author: subject,
-            text: 'The motivation to become developer is very big.',
-            comments_counter: 0,
-            likes_counter: 0
+            Text: 'The motivation to become a developer is very big.',
+            CommentsCounter: 0,
+            LikesCounter: 0
           )
         end
 
-        expect(subject.recent_posts.count).to eq(3)
+        expect(subject.recent_post.count).to eq(3)
       end
     end
   end
