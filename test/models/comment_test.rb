@@ -5,3 +5,4 @@ class CommentTest < ActiveSupport::TestCase
   #   assert true
   # end
 end
+
