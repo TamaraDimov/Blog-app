@@ -1,4 +1,4 @@
-require_relative './rails_helper'
+require_relative 'rails_helper'
 
 RSpec.describe Comment, type: :model do
   let(:first_user) do
@@ -30,13 +30,15 @@ RSpec.describe Comment, type: :model do
 
   before do
     subject.save
-    first_post.update(CommentsCounter: 0) 
+    first_post.update(CommentsCounter: 0)
   end
 
   describe 'Functionality' do
     context 'increment CommentsCounter for post' do
       it 'increments the CommentsCounter of the first_post' do
-        expect { subject.send(:increment_comments_counter_for_post) }.to change { first_post.CommentsCounter }.from(0).to(1)
+        expect { subject.send(:increment_comments_counter_for_post) }.to change {
+                                                                           first_post.CommentsCounter
+                                                                         }.from(0).to(1)
       end
     end
   end
