@@ -8,7 +8,6 @@ class Post < ApplicationRecord
   validates :CommentsCounter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :LikesCounter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
-
   attribute :Post_counter, default: 0
   # Get the most recent 5 posts
   def self.recent_posts
