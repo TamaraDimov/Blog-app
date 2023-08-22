@@ -3,12 +3,12 @@ class Post < ApplicationRecord
   has_many :comments
   has_many :likes
 
-  validates :Title, presence: true
-  validates :Title, length: { maximum: 250 }
-  validates :CommentsCounter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
-  validates :LikesCounter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  validates :title, presence: true
+  validates :title, length: { maximum: 250 }
+  validates :commentsCounter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  validates :likesCounter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
-  attribute :Post_counter, default: 0
+  attribute :post_counter, default: 0
   # Get the most recent 5 posts
   def self.recent_posts
     order(created_at: :desc).limit(5)
@@ -20,6 +20,6 @@ class Post < ApplicationRecord
 
   # Increment the Post_counter for the author
   def increment_post_counter_for_user
-    author.increment(:Post_counter, 1)
+    author.increment(:post_counter, 1)
   end
 end
