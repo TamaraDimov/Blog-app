@@ -4,16 +4,15 @@
     <div class="post__container">
       <h3><%= post.title %></h3>
 
+      <div>
+        <%= post.text.truncate(20) if truncated_message %>
+        <%= post.text unless truncated_message %>
+      </div> 
       <% if local_assigns[:show_all_comments] %>
         <div class="post__counters">
           Comments: <%= post.commentsCounter %>, Likes: <%= post.likesCounter %>
         </div>
       <% end %>
-
-      <div>
-        <%= post.text.truncate(20) if truncated_message %>
-        <%= post.text unless truncated_message %>
-      </div> 
 
       <% if !local_assigns[:show_all_comments] %>
         <div class="post__counters">
@@ -21,13 +20,19 @@
         </div>
       <% end %>
     </div>
-  </article>
-<% end %>
+
+    <% if local_assigns[:show_all_comments]%>
+  <% if post.comments.any? %>
+    <div class="container">
+      <%= render partial: 'split/comment', collection: post.comment%>
+    </div>
+  <% end %>
+<%end%>
 
 <% if local_assigns[:show_all_comments]%>
   <% if post.comments.any? %>
     <div class="container">
-      <%= render partial: 'split/comment', collection: post.comment%>
+      <%= render partial: 'split/comment', collection: post.comments%>
     </div>
   <% end %>
 <%end%>
@@ -39,4 +44,6 @@
       <%= render partial: 'split/comment', collection: last_comments%>
     </div>
   <% end %>
+<% end %>
+  </article>
 <% end %>
