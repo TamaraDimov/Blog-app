@@ -2,9 +2,8 @@
   <article class="post_view">
   <div class="card mb-3" style="max-width: 540px;">
     <div class="post__container">
-      <h3><%= post.title %></h3>
-
-      <div>
+     <h5 class="card-title ">Post no. <%= post.id %></h5>
+          <div>
         <%= post.text.truncate(20) if truncated_message %>
         <%= post.text unless truncated_message %>
       </div> 
@@ -21,27 +20,18 @@
       <% end %>
     </div>
 
-    <% if local_assigns[:show_all_comments]%>
-  <% if post.comments.any? %>
-    <div class="container">
-      <%= render partial: 'split/comment', collection: post.comment%>
-    </div>
-  <% end %>
-<%end%>
-
-<% if local_assigns[:show_all_comments]%>
-  <% if post.comments.any? %>
-    <div class="container">
-      <%= render partial: 'split/comment', collection: post.comments%>
-    </div>
-  <% end %>
-<%end%>
+<% if local_assigns[:show_all_comments] && post.comments.any? %>
+  <div class="container card mb-3" style="max-width: 540px;">
+    <%= render partial: 'split/comment', collection: post.comments %>
+  </div>
+<% end %>
 
 <% if local_assigns[:show_lasts_comments]%>
   <% last_comments = post.recent_comments %>
   <% if last_comments.any?%>
-    <div class="container">
-      <%= render partial: 'split/comment', collection: last_comments%>
+        <div class="container card mb-3" style="max-width: 540px;">
+
+<%= render partial: 'split/comment', collection: post.comments %>
     </div>
   <% end %>
 <% end %>

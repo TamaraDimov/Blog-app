@@ -2,18 +2,21 @@ class Comment < ApplicationRecord
   belongs_to :author, class_name: 'User', foreign_key: 'user_id'
   belongs_to :post
 
-  # Set a default value of 0 for CommentsCounter and LikesCounter
-  attribute :commentsCounter, default: 0
-  after_save :increment_comments_counter_for_post
-  # Increment the CommentsCounter
+  attribute :comments_counter, default: 0
 
-  # private
+  after_save :update_comments_counter_for_post
 
-  def increment_comments_counter_for_post
-    post.increment(:commentsCounter, 1)
+  private
+
+  # Increment and update the comments counter for the associated post
+  def update_comments_counter_for_post
+    increment_comments_counter
+    update_comments_counter
   end
 
-  after_save :update_comments_counter
+  def increment_comments_counter
+    post.increment(:comments_counter, 1)
+  end
 
   def update_comments_counter
     post.update(comments_counter: post.comments.count)
