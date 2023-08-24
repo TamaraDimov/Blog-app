@@ -6,7 +6,7 @@ class Like < ApplicationRecord
   attribute :likesCounter, default: 0
   after_save :increment_likes_counter_for_post
 
-  private
+  # private
 
   # Increment the LikesCounter
   def increment_likes_counter_for_post
