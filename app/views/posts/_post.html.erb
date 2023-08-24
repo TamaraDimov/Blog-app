@@ -1,0 +1,32 @@
+<%= link_to user_post_path(post.author, post) do %>
+  <article class="post_view">
+  <div class="card mb-3" style="max-width: 540px;">
+    <div class="post__container">
+      <h3><%= post.title %></h3>
+
+      <% if local_assigns[:show_all_comments] %>
+        <ddiv class="post__counters">
+          Comments: <%= post.commentsCounter %>, Likes: <%= post.likesCounter %>
+        </ddiv>
+      <% end %>
+      <div>
+        <%= post.text.truncate(20) if truncated_message %>
+        <%= post.text unless truncated_message %>
+      </div> 
+
+      <% if !local_assigns[:show_all_comments] %>
+        <div class="post__counters">
+          Comments: <%= post.commentsCounter %>, Likes: <%= post.likesCounter %>
+        </div>
+      <% end %>
+    </div>
+  </article>
+<% end %>
+
+<% if local_assigns[:show_all_comments]%>
+  <% if post.comments.any? %>
+    <div class="container">
+      <%= render partial: 'split/comment', collection: post.comment%>
+    </div>
+  <% end %>
+<%end%>

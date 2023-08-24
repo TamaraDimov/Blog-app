@@ -1,1 +1,4 @@
 <h1>List of users</h1>
+<% @users.each do |user| %>
+ <%= render partial: 'user', collection: @users %>
+<% end %>
