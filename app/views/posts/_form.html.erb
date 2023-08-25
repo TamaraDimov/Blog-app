@@ -1,0 +1,15 @@
+<%= form_with model: [@user, @post] do |form| %>
+
+
+  <div class="post_title">
+    <%= form.label :title%>
+    <%= form.text_field :title%>
+  </div>
+
+  <div class="post_text">
+    <%= form.label :text%>
+    <%= form.text_area :text%>
+  </div>
+
+  <button class="submit_btn"><%= form.submit %></button>
+<% end %>

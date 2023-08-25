@@ -20,6 +20,13 @@
       <% end %>
     </div>
 
+    <%= link_to post_likes_path(user_id: post.author.id,post_id: post.id), data: {
+        turbo_method: :post
+      }, class: 'like-button' do %>
+        <button class="btn btn-block btn-primary"><i class="fa fa-thumbs-up">Like</i> </button>
+
+      <% end %>
+
 <% if local_assigns[:show_all_comments] && post.comments.any? %>
   <div class="container card mb-3" style="max-width: 540px;">
     <%= render partial: 'split/comment', collection: post.comments %>

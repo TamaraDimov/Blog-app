@@ -1,0 +1,8 @@
+<%= form_with url: post_comments_path(@post.id), scope: :comment do |form| %>
+
+  <div class="comment_view">
+    <%= form.label :text%>
+    <%= form.text_area :text%>
+  </div>
+<div class="like-button"><%= form.submit %></div>
+<% end %>
