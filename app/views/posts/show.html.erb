@@ -1,2 +1,5 @@
 <%= render partial: 'post', locals: { post: @post, truncated_message: false, show_all_comments: true}%>
 
+<%= link_to new_post_comment_path(@post.id) do%>
+  <button type="button" class="btn btn-light center comment_btn" style="margin-left:200px"><%= 'Add new comment' %></button>
+<% end %> 

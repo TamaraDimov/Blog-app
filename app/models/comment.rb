@@ -4,7 +4,7 @@ class Comment < ApplicationRecord
 
   attribute :commentsCounter, default: 0
 
-  after_save :update_comments_counter_for_post
+  after_commit :update_comments_counter_for_post, on: %i[create destroy]
 
   private
 
