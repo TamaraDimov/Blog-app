@@ -1,1 +1,5 @@
-<h2>This is a list of posts from selected user</h2>
+<%= render partial: 'users/user', locals: { user: @user } %>
+
+<%= render partial: 'post', collection: @posts, locals: { truncated_message: true, show_lasts_comments: true} %>
+
+<button type="button" class="btn btn-light" style="margin-left:200px">Pagination</button>

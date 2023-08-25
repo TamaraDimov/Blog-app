@@ -1,0 +1,14 @@
+.post__container {
+  display: flex;
+  flex-direction: column;
+  font-family: sans-serif;
+  padding: 10px;
+  margin: 5%;
+}
+
+.post__counters {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 15px;
+  margin-bottom: 5%;
+}
