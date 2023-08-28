@@ -36,7 +36,7 @@ class PostsTest < ApplicationSystemTestCase
   test 'selected post link' do
     visit 'users/1/posts'
     click_on 'Post no. 1'
-    assert_current_path "/users/1/posts/1"
+    assert_current_path '/users/1/posts/1'
   end
   test 'post title' do
     visit 'users/1/posts/1'
@@ -66,10 +66,10 @@ class PostsTest < ApplicationSystemTestCase
   end
   test 'post comments' do
     visit 'users/1/posts/1'
-    assert_text "Lilly: Hi Tom!"
-    assert_text "Lilly: Hi Tom,how are you?!"
-    assert_text "Lilly: nice job!"
-    assert_text "Lilly: hope it works"
-    assert_text "Lilly: Hi Tom!"
+    assert_text 'Lilly: Hi Tom!'
+    assert_text 'Lilly: Hi Tom,how are you?!'
+    assert_text 'Lilly: nice job!'
+    assert_text 'Lilly: hope it works'
+    assert_text 'Lilly: Hi Tom!'
   end
 end
