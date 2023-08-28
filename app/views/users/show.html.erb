@@ -16,6 +16,6 @@
 
 
 
-<%= link_to user_posts_path(@user.id) do %>
-<button type="button" class="btn btn-light center" style="margin-left:200px">See all posts</button>
-<% end %>
+<%= link_to "Show all posts", user_posts_path(@user.id), class:"btn btn-light center button" %>
+<%# <button type="button" class="btn btn-light center button" style="margin-left:200px">Show all posts</button> %>
+<%# end %>
