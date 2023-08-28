@@ -3,6 +3,8 @@
   <div class="card mb-3" style="max-width: 540px;">
     <div class="post__container">
      <h5 class="card-title ">Post no. <%= post.id %></h5>
+      <h5 class="card-title writer">by <%= @user.name %></h5>
+
           <div>
         <%= post.text.truncate(20) if truncated_message %>
         <%= post.text unless truncated_message %>

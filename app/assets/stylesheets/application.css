@@ -18,3 +18,7 @@ a {
   text-decoration-line: none;
   color: black;
 }
+
+.button {
+  margin-left: 200px;
+}
