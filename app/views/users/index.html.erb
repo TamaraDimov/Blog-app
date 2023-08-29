@@ -1,7 +1,7 @@
- <%= render 'posts/form' %>
- <%= render partial: 'user', collection: @users %>
-  <div class="sign_out_btn">
-    <button>
-      <%= link_to 'Sign out',  destroy_user_session_path, method: :delete %>
-    </button>
-  </div>
+<%= render 'posts/form', class: 'text-center' %>
+<%= render partial: 'user', collection: @users %>
+<div class="sign_out_btn">
+  <button>
+    <%= link_to 'Sign out',  destroy_user_session_path, method: :delete %>
+  </button>
+</div>
