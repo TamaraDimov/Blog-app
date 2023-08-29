@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :update_allowed_parameters, if: :devise_controller?
+  before_action :authenticate_user!
 
   protected
 
@@ -11,7 +12,4 @@ class ApplicationController < ActionController::Base
       u.permit(:name, :surname, :email, :password, :current_password)
     end
   end
-  # def current_user
-  #   User.first
-  # end
 end
