@@ -1,15 +1,13 @@
 <%= form_with model: [@user, @post] do |form| %>
-
-
-  <div class="post_title">
-    <%= form.label :title%>
-    <%= form.text_field :title%>
+  <div class="input-group mb-3">
+    <%= form.label :title, class:"input-group-text" %>
+    <%= form.text_field :title, class:"form-control" %>
   </div>
-
-  <div class="post_text">
-    <%= form.label :text%>
-    <%= form.text_area :text%>
+  <div class="input-group mb-3">
+    <%= form.label :text, class:"input-group-text" %>
+    <%= form.text_area :text, class:"form-control" %>
   </div>
-
-  <button class="submit_btn"><%= form.submit %></button>
+  <div class="input-group mb-3">
+    <%= form.submit class:"btn btn-secondary" %>
+  </div>
 <% end %>

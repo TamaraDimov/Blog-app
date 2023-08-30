@@ -13,6 +13,12 @@
  *= require_tree .
  *= require_self
  */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
 a {
   text-decoration: none;
   text-decoration-line: none;
@@ -21,4 +27,9 @@ a {
 
 .button {
   margin-left: 200px;
+}
+
+.center {
+  text-align: center;
+  padding: 0;
 }
