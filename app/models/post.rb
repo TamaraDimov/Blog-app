@@ -20,6 +20,7 @@ class Post < ApplicationRecord
     comments.order(created_at: :desc).limit(5)
   end
   after_save :update_post_counters
+  after_destroy :decrement_user_post_counter
 
   private
 
@@ -37,5 +38,9 @@ class Post < ApplicationRecord
   def update_post_counters
     increment_post_counter_for_user
     update_post_counter_for_author
+  end
+
+  def decrement_user_post_counter
+    author.decrement!(:posts_counter)
   end
 end

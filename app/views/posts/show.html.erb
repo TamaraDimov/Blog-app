@@ -2,4 +2,12 @@
 
 <%= link_to new_post_comment_path(@post.id) do%>
   <button type="button" class="btn btn-light center comment_btn" style="margin-left:200px"><%= 'Add new comment' %></button>
+    <div class="button_holder">
+    <button>
+      <%= link_to 'Delete post', user_post_path(@user,@post), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %>
+    </button>
+  </div>
 <% end %> 

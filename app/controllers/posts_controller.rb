@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  # load_and_authorize_resource
+  
   def index
     @user = User.find(params[:user_id])
     @posts = @user.posts
@@ -8,6 +10,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.includes(:comments).find(params[:id])
     @user = @post.author
+    @user = User.find(params[:user_id])
   end
 
   def new
@@ -24,6 +27,13 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    @user = User.find(params[:user_id])
+    @post = @user.posts.find(params[:id])
+    @post.destroy
+    redirect_to user_post_path(current_user), alert: 'The post was been deleted'
+  end
+
   private
 
   def post_params
@@ -32,4 +42,6 @@ class PostsController < ApplicationController
     post[:likesCounter] = 0
     post
   end
+
+ 
 end
